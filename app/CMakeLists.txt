@@ -53,7 +53,7 @@ set_target_properties( avutil-55
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-
+                       avutil-55
 
 
                        # Links the target library to the log library
