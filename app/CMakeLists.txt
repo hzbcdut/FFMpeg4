@@ -92,6 +92,11 @@ set_target_properties( postproc-54
                        PROPERTIES IMPORTED_LOCATION
                        ${distribution_DIR}/libpostproc-54.so)
 
+set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+include_directories(src/main/cpp)
+include_directories(src/main/jniLibs/include)
+
 
 target_link_libraries( # Specifies the target library.
                        native-lib
