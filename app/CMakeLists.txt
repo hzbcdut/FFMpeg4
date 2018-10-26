@@ -36,8 +36,25 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
+
+
+
+
+set(distribution_DIR ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI})
+
+add_library( avutil-55
+             SHARED
+             IMPORTED )
+set_target_properties( avutil-55
+                       PROPERTIES IMPORTED_LOCATION
+                       ${distribution_DIR}/libavutil-55.so)
+
+
+
 target_link_libraries( # Specifies the target library.
                        native-lib
+
+
 
                        # Links the target library to the log library
                        # included in the NDK.
