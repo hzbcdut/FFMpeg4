@@ -97,9 +97,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 include_directories(src/main/cpp)
 include_directories(src/main/jniLibs/include)
 
+add_library( native-ffmpeg
+             SHARED
+             src/main/cpp/native-ffmpeg.cpp )
 
 target_link_libraries( # Specifies the target library.
                        native-lib
+                       native-ffmpeg
                        avutil-55  #工具库(大部分需要)
                        swresample-2    #音频采样数据格式转换
                       avcodec-57      #编解码(重要)
