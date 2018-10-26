@@ -3,8 +3,10 @@ package com.example.huzhengbiao.ffmpeg4;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -29,6 +31,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         mVideo = findViewById(R.id.video);
+
+        findViewById(R.id.btn_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                play(v);
+            }
+        });
+
+        findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stop(v);
+            }
+        });
     }
 
     /**
@@ -38,11 +54,10 @@ public class MainActivity extends AppCompatActivity {
     public native String stringFromJNI();
 
 
-    public void paly(View view) {
-        final String dir = Environment.getExternalStorageDirectory() + File.separator + "Download";
-        final String path = dir + File.separator + "1.mp4";
-        final VideoView mVideo = (VideoView) findViewById(R.id.video);
-        if (new File(path).exists()) {
+    public void play(View view) {
+
+        final String path = "https://baobab.kaiyanapp.com/api/v1/playUrl?vid=132872&resourceType=video&editionType=default&source=aliyun&ptl=true";
+        if (!TextUtils.isEmpty(path)) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -51,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             });
         } else {
             System.out.println("文件不存在");
+            Toast.makeText(this, " 文件不存在", Toast.LENGTH_LONG).show();
         }
     }
 
