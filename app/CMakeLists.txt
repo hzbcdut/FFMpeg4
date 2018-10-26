@@ -95,8 +95,14 @@ set_target_properties( postproc-54
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-                       avutil-55
-
+                       avutil-55  #工具库(大部分需要)
+                       swresample-2    #音频采样数据格式转换
+                      avcodec-57      #编解码(重要)
+                      avfilter-6      #滤镜特效处理
+                      swscale-4       #视频像素数据格式转换
+                      avdevice-57     #各种设备的输入输出
+                      avformat-57     #封装格式处理
+                      postproc-54     #后加工
 
                        # Links the target library to the log library
                        # included in the NDK.
